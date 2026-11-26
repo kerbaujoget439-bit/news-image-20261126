@@ -58,6 +58,9 @@ def run() -> int:
     if not is_png(source):
         print(f"error: {source} is not a PNG file", file=sys.stderr)
         return 1
+    if os.path.getsize(source) > 1048576:
+        print(f"error: {source} is over the 1 MiB cap", file=sys.stderr)
+        return 1
     shutil.copyfile(source, target)
     if sha256(source) != sha256(target):
         print("error: the copy does not match the original", file=sys.stderr)

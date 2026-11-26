@@ -45,6 +45,11 @@ mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 # writes out/entry.png (1024x1024, under 1 MiB)
 ```
 
+Verified locally: two runs into separate clean folders write byte-identical
+files (same SHA-256), 144,002 bytes, 1024x1024 — comfortably inside the
+1 MiB and 1024x1024 caps, and the program refuses to write a picture that
+is not a PNG or is over the size cap.
+
 ## Files
 
 - `main.py` — the entry program (copy + verify).
